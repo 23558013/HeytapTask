@@ -7,14 +7,14 @@
 * [x] 每日签到
 * [x] 每日浏览商品任务
 * [x] 每日分享商品任务
-* [x] <s>每日点推送任务</s> 2021-9-16 下线
+* [x] 每日点推送任务
 * [x] 可选 钉钉通知、Tg通知、pushplus推送加、企业微信、Bark通知、IFTTT通知 功能
 
 [![W8j59K.jpg](https://z3.ax1x.com/2021/07/19/W8j59K.jpg)](https://imgtu.com/i/W8j59K)
 
 ## 使用方式
 ### 本地执行
-> 本项目使用 python3 实现 (3.6以上版本)
+> 本项目使用 python3 实现
 #### 1、下载本项目 左上 CODE - Download ZIP 或 [点此下载](https://github.com/hwkxk/HeytapTask/archive/refs/heads/main.zip)
 #### 2、解压后用文本编辑器 打开`config.ini`按注释说明进行填写
 #### 3、需要安装的依赖
@@ -28,9 +28,7 @@ pip install requests
 
 #### 注意：不要fork后将个人信息填写到自己仓库`config.ini`文件中，请下载到本地编辑，以免隐私泄露。
 #### cookies 和 User-Agent 信息请自行在手机登录 `欢太商城` APP后使用HttpCanary等抓包工具获取！
-#### 请一定填好与登录cookie一致的机型信息的UA，不要用默认配置里面的UA，如果登录的UA不同cookie会被失效！
-
-> 具体抓包方法：[欢太商城HttpCanary抓包教程](https://github.com/hwkxk/HeytapTask/wiki/%E6%AC%A2%E5%A4%AA%E5%95%86%E5%9F%8EHttpCanary%E6%8A%93%E5%8C%85%E6%95%99%E7%A8%8B)
+> (具体抓包方式请百度/Google)
 
 
 ## 通知推送方式
@@ -67,7 +65,6 @@ pip install requests
 
 ## 使用注意
 * 部分域名屏蔽境外IP访问，所以本项目不适于在 非中国IP代理网络下 / Github Actions / 境外VPS 上运行!
-* 从未在欢太商城做过任务，请先手动进入任务中心完成一下任务再使用，否则可能无法获取到任务列表数据导致出错！@YYplus提供
 
 ## 申明
 

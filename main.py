@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2021/8/17
+# @Time    : 2021/7/15
 # @Author  : hwkxk(丶大K丶)
 # @Email   : k@hwkxk.cn
 
@@ -119,7 +119,7 @@ def daySign_task():
                     logger.info('【每日签到失败】: ' + str(res1))
             else:
                 print(str(qd['credits']),str(qd['type']),str(qd['gift']))
-                if len(str(qd['type'])) < 1 :
+                if qd['type'] == None:
                     data = "amount=" + str(qd['credits'])
                 else:
                     data = "amount=" + str(qd['credits']) + "&type=" + str(qd['type']) + "&gift=" + str(qd['gift'])
@@ -158,7 +158,7 @@ def daily_viewgoods():
             if data['name'] == '浏览商品':
                 qd = data
         if qd['completeStatus'] == 0:
-            shopList = client.get('https://msec.opposhop.cn/goods/v1/SeckillRound/goods/115?pageSize=12&currentPage=1')
+            shopList = client.get('https://msec.opposhop.cn/goods/v1/SeckillRound/goods/3016?pageSize=12&currentPage=1')
             res = shopList.json()
             if res['meta']['code'] == 200:
                 for skuinfo in res['detail']:
@@ -166,7 +166,6 @@ def daily_viewgoods():
                     print('正在浏览商品ID：', skuid)
                     client.get('https://msec.opposhop.cn/goods/v1/info/sku?skuId='+ str(skuid), headers=headers)
                     time.sleep(5)
-                    
                 res2 = cashingCredits(qd['marking'],qd['type'],qd['credits'])
                 if res2 == True:
                     logger.info('【每日浏览商品】: ' + '任务完成！积分领取+' + str(qd['credits']))
@@ -313,7 +312,7 @@ def main(event, context):
         daySign_task() #执行每日签到
         daily_viewgoods() #执行每日商品浏览任务
         daily_sharegoods() #执行每日商品分享任务
-        #daily_viewpush() #执行每日点推送任务 该任务在2021-9-16下线 注释
+        daily_viewpush() #执行每日点推送任务
 
     if users.has_option("dingding", 'dingtalkWebhook'):
         notify.sendDing(users.get("dingding","dingtalkWebhook"),users.get("dingding","dingtalksecret")) #钉钉推送日记
